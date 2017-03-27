@@ -1,4 +1,4 @@
-package com.example.administrator.mygoogleplay;
+package com.example.administrator.mygoogleplay.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,9 +14,9 @@ public abstract class MyBaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(getLayoutId());
         ButterKnife.bind(this);
         init();
-        setContentView(getLayoutId());
     }
 
     public abstract int getLayoutId();

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/GooglePlay/GooglePlay.iml" filepath="$PROJECT_DIR$/GooglePlay/GooglePlay.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyGooglePlay.iml" filepath="$PROJECT_DIR$/MyGooglePlay.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
