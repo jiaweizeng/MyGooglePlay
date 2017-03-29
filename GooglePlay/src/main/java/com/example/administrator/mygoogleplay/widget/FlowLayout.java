@@ -12,8 +12,8 @@ import java.util.List;
 public class FlowLayout extends ViewGroup {
 
     private List<Line> mLines = new ArrayList<Line>(); // 用来记录描述有多少行View
-    private int mHorizontalSpace = 10;
-    private int mVerticalSpace = 10;
+    private int mHorizontalSpace = 20;
+    private int mVerticalSpace = 20;
 
     public FlowLayout(Context context, AttributeSet attrs) {
         super(context, attrs);

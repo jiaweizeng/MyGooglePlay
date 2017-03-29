@@ -8,9 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.example.administrator.mygoogleplay.ui.activity.MainActivity">
-
     <include layout="@layout/myactivity_content_main"/>
-
     <android.support.design.widget.NavigationView
         android:id="@+id/nv_my_slide"
         android:layout_width="300dp"
@@ -18,7 +16,5 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/mydrawer_header"
         app:menu="@menu/menu_slide">
-
-
     </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

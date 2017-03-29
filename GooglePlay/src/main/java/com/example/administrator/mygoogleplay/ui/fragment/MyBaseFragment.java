@@ -4,7 +4,6 @@ package com.example.administrator.mygoogleplay.ui.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import android.widget.ProgressBar;
 
 import com.example.administrator.mygoogleplay.R;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -23,9 +23,9 @@ import butterknife.ButterKnife;
 public abstract class MyBaseFragment extends Fragment {
 
     private static final String TAG = "MyBaseFragment";
-//    @BindView(R.id.progressBar)
+    @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
-//    @BindView(R.id.ll_retry)
+    @BindView(R.id.ll_retry)
     LinearLayout mLlRetry;
     private FrameLayout mFrameLayout;
 
@@ -35,9 +35,9 @@ public abstract class MyBaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View inflate = inflater.inflate(R.layout.myload_retry, null);
-        mProgressBar= (ProgressBar) inflate.findViewById(R.id.progressBar);
+//        mProgressBar= (ProgressBar) inflate.findViewById(R.id.progressBar);
         mFrameLayout = (FrameLayout) inflate.findViewById(R.id.fl_base);
-        mLlRetry=(LinearLayout) inflate.findViewById(R.id.ll_retry);
+//        mLlRetry=(LinearLayout) inflate.findViewById(R.id.ll_retry);
         ButterKnife.bind(this, inflate);
 
 //        init();
@@ -53,7 +53,9 @@ public abstract class MyBaseFragment extends Fragment {
         startLoadData();
     }
 
-    public abstract void startLoadData();
+    public void startLoadData(){
+
+    }
 
     private void onRestart(View v) {
         mProgressBar.setVisibility(View.VISIBLE);
@@ -62,8 +64,8 @@ public abstract class MyBaseFragment extends Fragment {
     }
 
     public void dataLoadSuccess() {
-        Log.d(TAG, "dataLoadSuccess: mProgressBar" + mProgressBar);
-        Log.d(TAG, "dataLoadSuccess: mLlRetry" + mLlRetry);
+//        Log.d(TAG, "dataLoadSuccess: mProgressBar" + mProgressBar);
+//        Log.d(TAG, "dataLoadSuccess: mLlRetry" + mLlRetry);
         mProgressBar.setVisibility(View.GONE);
         mLlRetry.setVisibility(View.GONE);
         mFrameLayout.addView(onCreateContentView());
