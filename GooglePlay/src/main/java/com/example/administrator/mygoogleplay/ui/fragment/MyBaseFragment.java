@@ -40,11 +40,13 @@ public abstract class MyBaseFragment extends Fragment {
 //        mLlRetry=(LinearLayout) inflate.findViewById(R.id.ll_retry);
         ButterKnife.bind(this, inflate);
 
-//        init();
+
         return inflate;
     }
 
-//    protected abstract void init();
+    protected  void init(){
+
+    }
 
     public abstract View onCreateContentView();
 
@@ -69,6 +71,7 @@ public abstract class MyBaseFragment extends Fragment {
         mProgressBar.setVisibility(View.GONE);
         mLlRetry.setVisibility(View.GONE);
         mFrameLayout.addView(onCreateContentView());
+        init();
     }
 
     public void dataLoadError() {

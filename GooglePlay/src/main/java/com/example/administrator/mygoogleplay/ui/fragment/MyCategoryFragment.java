@@ -1,7 +1,7 @@
 package com.example.administrator.mygoogleplay.ui.fragment;
 
 import android.util.Log;
-import android.widget.ListAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Toast;
 
 import com.example.administrator.mygoogleplay.adapter.MyCategoryAdapter;
@@ -45,7 +45,7 @@ public class MyCategoryFragment extends MyBaseListFragment {
 
 
     @Override
-    protected ListAdapter setAdapter() {
+    protected BaseAdapter setAdapter() {
         Log.d(TAG, "setAdapter: 222222222222");
         return new MyCategoryAdapter(getContext(),mCategoryItemBeen);
     }

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/iv_app_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/ic_launcher"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_app_icon"
+            android:orientation="vertical"
+            android:paddingLeft="8dp">
+
+            <TextView
+                android:id="@+id/tv_app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AppName"
+                android:textSize="20sp"
+                />
+
+            <RatingBar
+                android:id="@+id/rb_app"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:rating="3.5"
+                />
+
+            <TextView
+                android:id="@+id/tv_app_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AppSize"
+                android:textSize="16sp"/>
+        </LinearLayout>
+        <com.example.administrator.mygoogleplay.widget.MyDownView
+            android:layout_width="wrap_content"
+            android:id="@+id/mydownview"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            >
+
+        </com.example.administrator.mygoogleplay.widget.MyDownView>
+    </RelativeLayout>
+    <View
+
+        android:layout_width="match_parent"
+        android:background="@android:color/black"
+        android:layout_height="1dp"/>
+    <TextView
+        android:id="@+id/tv_app_des"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text="balabala"
+        android:textSize="16sp"/>
+</LinearLayout>
