@@ -1,6 +1,7 @@
 package com.example.administrator.mygoogleplay.network;
 
 import com.example.administrator.mygoogleplay.bean.MyCategoryItemBean;
+import com.example.administrator.mygoogleplay.bean.MyDetailBean;
 import com.example.administrator.mygoogleplay.bean.MyGameBean;
 import com.example.administrator.mygoogleplay.bean.MyHomeBean;
 import com.example.administrator.mygoogleplay.bean.MySubjectItemBean;
@@ -36,4 +37,7 @@ public interface Api {
 
     @GET("home")
     Call<MyHomeBean> listHome(@Query("index")int index);
+
+    @GET("detail")
+    Call<MyDetailBean> listDetail(@Query("packageName")String packageName);
 }

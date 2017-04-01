@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--App 信息-->
+            <com.example.leon.googleplaydemo35.widget.AppDetailInfoView
+                android:id="@+id/app_detail_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.example.leon.googleplaydemo35.widget.AppDetailInfoView>
+
+            <!-- App 安全广告-->
+            <com.example.leon.googleplaydemo35.widget.AppDetailSecurityView
+                android:id="@+id/app_detail_security"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+            </com.example.leon.googleplaydemo35.widget.AppDetailSecurityView>
+
+            <!-- App 截图-->
+            <com.example.leon.googleplaydemo35.widget.AppDetailGalleryView
+                android:id="@+id/app_detail_gallery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+            </com.example.leon.googleplaydemo35.widget.AppDetailGalleryView>
+
+            <!-- App 描述介绍-->
+            <com.example.leon.googleplaydemo35.widget.AppDetailDesView
+                android:id="@+id/app_detail_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+            </com.example.leon.googleplaydemo35.widget.AppDetailDesView>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!--底部条-->
+    <com.example.leon.googleplaydemo35.widget.AppDetailBottomBar
+        android:id="@+id/app_detail_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.example.leon.googleplaydemo35.widget.AppDetailBottomBar>
+
+</LinearLayout>

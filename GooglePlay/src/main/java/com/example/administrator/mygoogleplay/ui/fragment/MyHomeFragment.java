@@ -1,9 +1,7 @@
 package com.example.administrator.mygoogleplay.ui.fragment;
 
 import android.view.View;
-import android.widget.BaseAdapter;
 
-import com.example.administrator.mygoogleplay.adapter.MyGameAdapter;
 import com.example.administrator.mygoogleplay.app.MyConstant;
 import com.example.administrator.mygoogleplay.bean.MyHomeBean;
 import com.example.administrator.mygoogleplay.network.MyRetrofit;
@@ -18,9 +16,9 @@ import retrofit2.Response;
 /**
  * Created by Administrator on 2017/3/26 0026.
  */
-public class MyHomeFragment extends MyBaseLoadMoreListFragment {
+public class MyHomeFragment extends MyBaseAppFragment {
 
-    private MyHomeBean mBody;
+//    private MyHomeBean mBody;
     private List<String> mPicture;
 
     @Override
@@ -29,8 +27,10 @@ public class MyHomeFragment extends MyBaseLoadMoreListFragment {
         call.enqueue(new Callback<MyHomeBean>() {
             @Override
             public void onResponse(Call<MyHomeBean> call, Response<MyHomeBean> response) {
-                mBody = response.body();
-                mPicture = mBody.getPicture();
+                getDataList().addAll(response.body().getList());
+//                mBody = response.body();
+//                mPicture = mBody.getPicture();
+                mPicture = response.body().getPicture();
                 dataLoadSuccess();
             }
 
@@ -54,12 +54,13 @@ dataLoadError();
 
     @Override
     protected void onStartLoadMore() {
-        Call<MyHomeBean> call = MyRetrofit.getInstance().getApi().listHome(mBody.getList().size());
+//        Call<MyHomeBean> call = MyRetrofit.getInstance().getApi().listHome(mBody.getList().size());
+        Call<MyHomeBean> call = MyRetrofit.getInstance().getApi().listHome(getDataList().size());
         call.enqueue(new Callback<MyHomeBean>() {
             @Override
             public void onResponse(Call<MyHomeBean> call, Response<MyHomeBean> response) {
-                mBody.getList().addAll(response.body().getList());
-
+//                mBody.getList().addAll(response.body().getList());
+                getDataList().addAll(response.body().getList());
                 getAdapter().notifyDataSetChanged();
             }
 
@@ -71,8 +72,8 @@ dataLoadError();
 
     }
 
-    @Override
-    protected BaseAdapter setAdapter() {
-        return new MyGameAdapter(getContext(),mBody.getList());
-    }
+//    @Override
+//    protected BaseAdapter setAdapter() {
+//        return new MyGameAdapter(getContext(),mBody.getList());
+//    }
 }

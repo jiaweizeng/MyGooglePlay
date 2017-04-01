@@ -1,8 +1,11 @@
 package com.example.administrator.mygoogleplay.ui.activity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -11,9 +14,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.administrator.mygoogleplay.R;
 import com.example.administrator.mygoogleplay.adapter.pagerAdapter;
+import com.example.administrator.mygoogleplay.manager.MyDownloadManager;
 
 public class MainActivity extends MyBaseActivity {
 
@@ -46,6 +51,11 @@ public class MainActivity extends MyBaseActivity {
         mViewPager.setAdapter(new pagerAdapter(mArray,getSupportFragmentManager()));
 
         mTabLayout.setupWithViewPager(mViewPager);
+
+        int i = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if(i!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},0);
+        }
     }
 
 
@@ -78,5 +88,19 @@ public class MainActivity extends MyBaseActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case 0:
+                if(grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                    MyDownloadManager.getInstance().createDownloadDir();
+                }else {
+                    Toast.makeText(this, "you can't write to external storage", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
     }
 }
