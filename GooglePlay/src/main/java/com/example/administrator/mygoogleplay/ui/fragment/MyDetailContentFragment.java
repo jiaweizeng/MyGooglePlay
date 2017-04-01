@@ -5,6 +5,7 @@ import android.view.View;
 import com.example.administrator.mygoogleplay.R;
 import com.example.administrator.mygoogleplay.bean.MyDetailBean;
 import com.example.administrator.mygoogleplay.network.MyRetrofit;
+import com.example.administrator.mygoogleplay.widget.MyDetailBottomView;
 import com.example.administrator.mygoogleplay.widget.MyDetailDesView;
 import com.example.administrator.mygoogleplay.widget.MyDetailGalleryView;
 import com.example.administrator.mygoogleplay.widget.MyDetailInfosView;
@@ -33,6 +34,8 @@ public class MyDetailContentFragment extends MyBaseFragment{
         galleryView.bind(mBody);
         MyDetailDesView detailDesView= (MyDetailDesView) inflate.findViewById(R.id.myDetailDes);
         detailDesView.bind(mBody);
+        MyDetailBottomView detailBottomView= (MyDetailBottomView) inflate.findViewById(R.id.detailBottomView);
+        detailBottomView.bind(mBody);
         return inflate;
     }
 

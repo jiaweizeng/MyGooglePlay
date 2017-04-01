@@ -44,6 +44,7 @@
         </LinearLayout>
     </ScrollView>
 <com.example.administrator.mygoogleplay.widget.MyDetailBottomView
+    android:id="@+id/detailBottomView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 

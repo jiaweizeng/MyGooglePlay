@@ -5,6 +5,7 @@ import android.view.View;
 import com.example.leon.googleplaydemo35.R;
 import com.example.leon.googleplaydemo35.bean.AppDetailBean;
 import com.example.leon.googleplaydemo35.network.HeiMaRetrofit;
+import com.example.leon.googleplaydemo35.widget.AppDetailBottomBar;
 import com.example.leon.googleplaydemo35.widget.AppDetailDesView;
 import com.example.leon.googleplaydemo35.widget.AppDetailGalleryView;
 import com.example.leon.googleplaydemo35.widget.AppDetailInfoView;
@@ -59,7 +60,9 @@ public class AppDetailFragment extends BaseFragment {
         //应用描述
         AppDetailDesView appDetailDesView = (AppDetailDesView) view.findViewById(R.id.app_detail_des);
         appDetailDesView.bindView(mAppDetailBean);
-
+        //底部条
+        AppDetailBottomBar appDetailBottomBar = (AppDetailBottomBar) view.findViewById(R.id.app_detail_bottom_bar);
+        appDetailBottomBar.bindView(mAppDetailBean);
         return view;
     }
 }

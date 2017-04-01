@@ -104,57 +104,22 @@ public class AppDetailSecurityView extends RelativeLayout {
             AnimationUtil.animationViewHeight(mSecurityInfoContainer, measuredHeight, 0);
             //箭头顺时针旋转180
             AnimationUtil.rotateView(mSecurityArrow, -180f, 0);
-/*            ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mSecurityArrow, "rotation", -180f, 0);
-            objectAnimator.start();*/
-/*            int measuredHeight = mSecurityInfoContainer.getMeasuredHeight();
-            ValueAnimator valueAnimator = ValueAnimator.ofInt(measuredHeight, 0);//产生动画需要数据序列（0， measureHeight）
-            //添加监听器，获取动画需要的数据数据
-            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator animation) {
-                    int value = (int) animation.getAnimatedValue();
-                    Log.d(TAG, "onAnimationUpdate: " + value);
-                    //拿到变化的数据设置容器的高度
-                    LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mSecurityInfoContainer.getLayoutParams();//获取布局参数
-                    layoutParams.height = value;
-                    mSecurityInfoContainer.setLayoutParams(layoutParams);
-                }
-            });
-            //启动animator
-            valueAnimator.start();*/
 
         } else {
             //展开
             //高度从0到原始高度（展开后的高度）
             //测量描述容器展开后的高度
 //            指定期望是不限制大小 MeasureSpec.UNSPECIFIED;
-//            MeasureSpec.makeMeasureSpec(0, 0); = 0
-            mSecurityInfoContainer.measure(0, 0);
+//
+            // 32位 前两位模式， 后30位大小  0 0
+            //MeasureSpec.makeMeasureSpec(0, 0); 组装期望 MeasureSpec.UNSPECIFIED;不限制测量控件的大小
+            mSecurityInfoContainer.measure(0, 0);//想多大就多大 onMeasure -> setMeasuredDemision measuredHeight赋值
             //获取展开后的高度
-            int measuredHeight = mSecurityInfoContainer.getMeasuredHeight();
+            int measuredHeight = mSecurityInfoContainer.getMeasuredHeight();//获取不限定大小之后的结果
             Log.d(TAG, "toogle: " + measuredHeight);
             AnimationUtil.animationViewHeight(mSecurityInfoContainer, 0, measuredHeight);
-            //箭头逆时针旋转180
-/*            ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mSecurityArrow, "rotation", 0, -180f);
-            objectAnimator.start();*/
             AnimationUtil.rotateView(mSecurityArrow, 0, -180f);
 
-
-/*            ValueAnimator valueAnimator = ValueAnimator.ofInt(0, measuredHeight);//产生动画需要数据序列（0， measureHeight）
-            //添加监听器，获取动画需要的数据数据
-            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator animation) {
-                    int value = (int) animation.getAnimatedValue();
-                    Log.d(TAG, "onAnimationUpdate: " + value);
-                    //拿到变化的数据设置容器的高度
-                    LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mSecurityInfoContainer.getLayoutParams();//获取布局参数
-                    layoutParams.height = value;
-                    mSecurityInfoContainer.setLayoutParams(layoutParams);
-                }
-            });
-            //启动animator
-            valueAnimator.start();*/
         }
 
         //更新标记

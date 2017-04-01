@@ -88,7 +88,7 @@ public class AppDetailDesView extends RelativeLayout {
     private void toggle() {
         if (isOpen) {
             //关闭
-            //从展开后的高度 到7行高度
+            //从展开后的高度(原始高度) 到7行高度
             int start = mOriginalHeight;
             //如果大于7行，设置行高为7行，测量7行高度
             if (mAppDetailDesText.getLineCount() > MAX_LINES) {
@@ -97,16 +97,20 @@ public class AppDetailDesView extends RelativeLayout {
             }
             int end = mAppDetailDesText.getMeasuredHeight();
             AnimationUtil.animationViewHeight(mAppDetailDesText, start, end);
+            AnimationUtil.rotateView(mDesArrow, -180, 0);
+
         } else {
-            //打开
+            //如果关闭就打开
             //如果大于7, 从7行展开到应该有的高度
             int measuredHeight = mAppDetailDesText.getMeasuredHeight();//拿到7行的高度
-/*            //测量，期望为UNSPECIFIED
+/*            //测量，期望为UNSPECIFIED 即使期望模式UNSPECIFIED, 还是考虑之前设置的行高
             mAppDetailDesText.measure(0, 0);//测量无效，测出来还是7行高度，由于初始化时候已经设置了行高
             int afterMesuredHeight = mAppDetailDesText.getMeasuredHeight();
             Log.d(TAG, "toggle: " + measuredHeight + " " + afterMesuredHeight);*/
             AnimationUtil.animationViewHeight(mAppDetailDesText, measuredHeight, mOriginalHeight);
+            AnimationUtil.rotateView(mDesArrow, 0, -180f);
         }
+
         isOpen = !isOpen;
     }
 }

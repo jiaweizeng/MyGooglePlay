@@ -9,6 +9,9 @@ import android.util.AttributeSet;
 import android.widget.Button;
 
 import com.example.leon.googleplaydemo35.R;
+import com.example.leon.googleplaydemo35.bean.AppDetailBean;
+import com.example.leon.googleplaydemo35.bean.DownloadInfo;
+import com.example.leon.googleplaydemo35.manager.DownloadManager;
 
 /**
  * Created by Leon on 2017/3/30.
@@ -64,5 +67,34 @@ public class DownloadButton extends Button {
 
     public void setMax(int max) {
         mMax = max;
+    }
+
+
+    /**
+     * 同步DownloadButton下载状态
+     * @param appDetailBean
+     */
+    public void syncState(AppDetailBean appDetailBean) {
+        //初始化DownloadInfo 下载信息
+        DownloadInfo downloadInfo = DownloadManager.getInstance().initDownloadInfo(getContext(),
+                appDetailBean.getPackageName(),
+                appDetailBean.getSize(),
+                appDetailBean.getDownloadUrl());
+        //根据初始化的结果，刷新界面状态
+        updateStatus(downloadInfo);
+    }
+
+    private void updateStatus(DownloadInfo downloadInfo) {
+        switch (downloadInfo.getStatus()) {
+            case DownloadManager.STATE_INSTALLED:
+                setText(getResources().getString(R.string.open));
+                break;
+            case DownloadManager.STATE_DOWNLOADED:
+                setText(getResources().getString(R.string.install));//如果是下载完成，则显示安装
+                break;
+            case DownloadManager.STATE_UN_DOWNLOAD:
+                setText(getResources().getString(R.string.download));
+                break;
+        }
     }
 }

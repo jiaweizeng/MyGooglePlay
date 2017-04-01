@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.example.administrator.mygoogleplay.R;
+import com.example.administrator.mygoogleplay.bean.MyDetailBean;
+import com.example.administrator.mygoogleplay.manager.MyDownloadManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,6 +25,7 @@ public class MyDetailBottomView extends RelativeLayout {
     MyDownloadButton mDownload;
     @BindView(R.id.share)
     Button mShare;
+    private MyDetailBean mBody;
 
     public MyDetailBottomView(Context context) {
         this(context, null);
@@ -40,15 +43,24 @@ public class MyDetailBottomView extends RelativeLayout {
 //        mDownload.setProgress(10);
     }
 
+    public void bind(MyDetailBean body) {
+        mBody = body;
+        mDownload.sync(body);
+    }
+
     @OnClick({R.id.collection, R.id.download, R.id.share})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.collection:
                 break;
             case R.id.download:
+
+                MyDownloadManager.getInstance().dealMiddleButtonAction(getContext(),mBody.getPackageName());
                 break;
             case R.id.share:
                 break;
         }
     }
+
+
 }
