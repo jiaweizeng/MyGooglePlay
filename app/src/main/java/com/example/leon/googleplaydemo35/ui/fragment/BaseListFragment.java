@@ -26,7 +26,6 @@ public abstract class BaseListFragment extends BaseFragment {
         View header = onCreateHeaderView();
         if ( header != null) {
             mListView.addHeaderView(header);
-
         }
         initListView();
         return mListView;

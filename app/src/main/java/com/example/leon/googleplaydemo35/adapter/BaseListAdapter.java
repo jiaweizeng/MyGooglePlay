@@ -11,8 +11,12 @@ import java.util.List;
  * Created by Leon on 2017/3/27.
  */
 
+/**
+ * 每次写ListView的adapter都要很多方法 getCount, getItemId, getItem, getView
+ */
 public abstract class BaseListAdapter<T> extends BaseAdapter {
 
+    //抽取上下文数据列表
     private Context mContext;
     protected List<T> mDataList;
 

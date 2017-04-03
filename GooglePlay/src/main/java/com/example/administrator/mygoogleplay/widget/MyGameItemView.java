@@ -54,6 +54,7 @@ public class MyGameItemView extends RelativeLayout {
         mTvAppName.setText(bean.getName());
         mTvAppDes.setText(bean.getDes());
         mTvAppSize.setText(Formatter.formatFileSize(getContext(),bean.getSize()));
+        mMydownview.bind(bean);
         mRbApp.setRating(bean.getStars());
         String url = MyConstant.URL_IMAGE+bean.getIconUrl();
         Glide.with(getContext()).load(url).placeholder(R.mipmap.ic_launcher).centerCrop().into(mIvAppIcon);

@@ -16,7 +16,7 @@ import java.util.List;
  */
 public abstract class BaseAppListFragment extends BaseLoadMoreListFragment {
 
-    List<AppListItemBean> mDataList = new ArrayList<AppListItemBean>();
+    List<AppListItemBean> mDataList = new ArrayList<AppListItemBean>();//数据集合
 
 
     @Override
@@ -37,5 +37,16 @@ public abstract class BaseAppListFragment extends BaseLoadMoreListFragment {
         //传入点击位置item 包名，需要包名发网络请求获取详情数据
         intent.putExtra("package_name", getDataList().get(position).getPackageName());
         startActivity(intent);
+    }
+
+    /**
+     * 退出详情界面后重新刷新，绑定观察者
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getAdapter() != null) {
+            getAdapter().notifyDataSetChanged();
+        }
     }
 }

@@ -27,7 +27,7 @@ public class SubjectFragment extends BaseLoadMoreListFragment {
             @Override
             public void onResponse(Call<List<SubjectItemBean>> call, Response<List<SubjectItemBean>> response) {
                 mDataList = response.body();
-                onDataLoadedSuccess();
+                onDataLoadedSuccess();//onCreateContentView(BaseFragment会调用) --> 具体实现是在BaseListFragment 返回ListView -->onCreateAdapter
             }
 
             @Override
@@ -54,6 +54,10 @@ public class SubjectFragment extends BaseLoadMoreListFragment {
         });
     }
 
+    /**
+     * 返回专题界面的apdapter
+     * @return
+     */
     @Override
     public BaseAdapter onCreateAdapter() {
         return new SubjectAdapter(getContext(), mDataList);
